@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1인 기업가 마케팅 검증 워크시트 (7종)</title>
+<meta name="description" content="1인 기업가를 위한 마케팅 검증 워크시트 7종 — 사업 브리프 · 페르소나 · 메시지 · 오퍼 · 증거 · 채널 · 도구">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #2a2438;
+  --ink-soft: #5c5470;
+  --ink-muted: #8e8a9a;
+  --cream: #faf8f5;
+  --warm-white: #f5f0eb;
+  --lavender-deep: #6b5b8a;
+  --lavender-mid: #9584b0;
+  --lavender-soft: #c8bdd9;
+  --lavender-whisper: #ede8f5;
+  --terracotta: #c17c5a;
+  --terracotta-soft: #e8c4ad;
+  --sage: #8fa68e;
+  --sage-soft: #d4e0d3;
+  --section-line: #ddd5c8;
+  --input-bg: rgba(250, 248, 245, 0.7);
+  --shadow-soft: 0 2px 20px rgba(42, 36, 56, 0.06);
+  --shadow-card: 0 4px 30px rgba(42, 36, 56, 0.08);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.8;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: 6rem;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(107, 91, 138, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(193, 124, 90, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ───────── HEADER ───────── */
+.site-header {
+  text-align: center;
+  padding: 3.5rem 1.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+.site-eyebrow {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--lavender-deep);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.site-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.site-sub {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 560px;
+  margin: 0 auto 1.6rem;
+}
+.overall-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--lavender-soft);
+  padding: 8px 20px;
+  border-radius: 100px;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.overall-progress b { color: var(--lavender-deep); font-weight: 700; }
+.op-bar {
+  width: 120px; height: 6px;
+  background: var(--lavender-whisper);
+  border-radius: 100px; overflow: hidden;
+}
+.op-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--lavender-deep), var(--terracotta));
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ───────── TABS ───────── */
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--section-line);
+}
+.tabs {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  padding: 12px 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.tab {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1.5px solid var(--section-line);
+  background: transparent;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s;
+}
+.tab:hover { border-color: var(--lavender-mid); color: var(--lavender-deep); }
+.tab.active {
+  background: var(--lavender-deep);
+  border-color: var(--lavender-deep);
+  color: #fff;
+}
+.tab .tab-check {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; font-weight: 700;
+  background: var(--sage); color: #fff;
+  opacity: 0; transform: scale(0.5);
+  transition: all 0.25s;
+}
+.tab.done .tab-check { opacity: 1; transform: scale(1); }
+.tab.active.done .tab-check { background: #fff; color: var(--lavender-deep); }
+
+/* ───────── PANELS ───────── */
+.panel-wrap {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+.panel { display: none; animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-number {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--lavender-mid);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.6rem;
+}
+.panel-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.4; margin-bottom: 0.4rem;
+}
+.panel-time {
+  font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 1.5rem;
+}
+.panel-time span {
+  background: var(--warm-white); border: 1px solid var(--section-line);
+  padding: 3px 12px; border-radius: 100px;
+}
+
+.coaching-note {
+  background: var(--lavender-whisper);
+  border-left: 3px solid var(--lavender-mid);
+  padding: 1.1rem 1.4rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 2.5rem;
+  font-size: 0.88rem; color: var(--ink-soft);
+  line-height: 1.85;
+}
+.coaching-note.warn { background: #fdf3ed; border-left-color: var(--terracotta); }
+
+/* ───────── BLOCKS ───────── */
+.block { margin-bottom: 2.4rem; }
+.block-label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.3rem; line-height: 1.6;
+}
+.block-sub {
+  font-size: 0.84rem; color: var(--ink-muted);
+  margin-bottom: 1rem; line-height: 1.7;
+}
+.block-tip {
+  font-size: 0.82rem; color: var(--terracotta);
+  margin-top: 0.7rem; line-height: 1.7;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  background: var(--input-bg);
+  border: 1.5px solid var(--section-line);
+  border-radius: var(--radius-sm);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 0.95rem; line-height: 1.8; color: var(--ink);
+  resize: vertical; transition: all 0.3s;
+}
+textarea:focus, input[type="text"]:focus {
+  outline: none; border-color: var(--lavender-mid);
+  box-shadow: 0 0 0 3px rgba(107, 91, 138, 0.08); background: #fff;
+}
+textarea::placeholder, input[type="text"]::placeholder {
+  color: var(--ink-muted); font-style: italic; font-size: 0.88rem;
+}
+textarea.short { min-height: 72px; }
+textarea.medium { min-height: 120px; }
+
+/* Fill blank */
+.fill-blank {
+  display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;
+  font-family: 'Noto Serif KR', serif; font-size: 1.02rem;
+  line-height: 2.2; color: var(--ink); margin-bottom: 0.4rem;
+}
+.fill-blank input {
+  border: none; border-bottom: 2px solid var(--lavender-soft);
+  background: transparent; padding: 2px 8px;
+  font-family: 'Noto Serif KR', serif; font-size: 1.02rem;
+  color: var(--lavender-deep); min-width: 120px; flex: 1;
+  transition: border-color 0.3s; border-radius: 0;
+}
+.fill-blank input:focus { outline: none; border-bottom-color: var(--lavender-deep); }
+
+/* Fields grid */
+.fields { display: flex; flex-direction: column; gap: 0.9rem; }
+.field-row {
+  display: grid; grid-template-columns: 130px 1fr;
+  align-items: center; gap: 1rem;
+}
+.field-row > label {
+  font-size: 0.88rem; font-weight: 500; color: var(--ink-soft);
+}
+.field-row .field-input { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.field-suffix { font-size: 0.85rem; color: var(--ink-muted); }
+
+/* Tables */
+.ws-table-wrap { overflow-x: auto; margin-bottom: 0.4rem; }
+table.ws-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem;
+  background: #fff; border-radius: var(--radius-sm); overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+table.ws-table th {
+  background: var(--lavender-whisper); color: var(--lavender-deep);
+  font-weight: 600; padding: 10px 12px; text-align: left;
+  font-size: 0.8rem; border-bottom: 1px solid var(--section-line);
+}
+table.ws-table td {
+  padding: 8px 10px; border-bottom: 1px solid var(--lavender-whisper);
+  vertical-align: middle;
+}
+table.ws-table tr:last-child td { border-bottom: none; }
+table.ws-table td.cell-static { color: var(--ink-soft); white-space: nowrap; }
+table.ws-table input[type="text"] {
+  padding: 7px 10px; font-size: 0.85rem; min-width: 80px;
+}
+table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
+
+/* Checks (radio/checkbox) */
+.options { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 11px 14px; border: 1.5px solid var(--section-line);
+  border-radius: var(--radius-sm); background: var(--input-bg);
+  cursor: pointer; transition: all 0.2s; font-size: 0.9rem;
+  color: var(--ink-soft); line-height: 1.6;
+}
+.opt:hover { border-color: var(--lavender-mid); }
+.opt input { margin-top: 4px; accent-color: var(--lavender-deep); cursor: pointer; width: 16px; height: 16px; flex-shrink: 0; }
+.opt:has(input:checked) {
+  border-color: var(--lavender-deep); background: var(--lavender-whisper);
+  color: var(--ink); font-weight: 500;
+}
+.opt .opt-body { flex: 1; }
+.opt .opt-desc { font-size: 0.78rem; color: var(--ink-muted); font-weight: 400; margin-top: 2px; }
+.opt-text {
+  margin-top: 7px; width: 100%;
+  border: none; border-bottom: 1.5px solid var(--lavender-soft);
+  background: transparent; padding: 3px 4px; font-size: 0.85rem;
+  color: var(--lavender-deep); border-radius: 0;
+}
+.opt-text:focus { outline: none; border-bottom-color: var(--lavender-deep); }
+.opt.inline-checks { padding: 8px 11px; font-size: 0.82rem; }
+
+/* Tags */
+.keyword-tags { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.keyword-tags input {
+  flex: 1; min-width: 120px; padding: 0.6rem 1rem;
+  border: 1.5px dashed var(--lavender-soft); border-radius: 100px;
+  background: var(--lavender-whisper); font-family: 'Pretendard', sans-serif;
+  font-size: 0.9rem; text-align: center; color: var(--lavender-deep);
+  font-weight: 500; transition: all 0.3s;
+}
+.keyword-tags input:focus {
+  outline: none; border-style: solid; border-color: var(--lavender-deep);
+  background: #fff; box-shadow: 0 0 0 3px rgba(107, 91, 138, 0.1);
+}
+
+/* Checklist */
+.checklist {
+  background: #fff; border: 1px solid var(--lavender-soft);
+  border-radius: var(--radius); padding: 1.6rem 1.8rem;
+  margin-top: 2.5rem; box-shadow: var(--shadow-card); position: relative; overflow: hidden;
+}
+.checklist::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--lavender-deep), var(--terracotta), var(--sage));
+}
+.checklist h3 {
+  font-family: 'Noto Serif KR', serif; font-size: 1.05rem;
+  font-weight: 700; color: var(--ink); margin-bottom: 1rem;
+}
+.checklist-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 7px 0; font-size: 0.9rem; color: var(--ink-soft);
+  cursor: pointer; line-height: 1.6;
+}
+.checklist-item input { margin-top: 4px; accent-color: var(--sage); width: 17px; height: 17px; cursor: pointer; flex-shrink: 0; }
+.checklist-item:has(input:checked) { color: var(--ink-muted); text-decoration: line-through; text-decoration-color: var(--lavender-soft); }
+.checklist-footer {
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--section-line);
+  font-size: 0.85rem; color: var(--lavender-deep); line-height: 1.7;
+}
+
+/* ───────── ACTION BAR ───────── */
+.action-bar {
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--section-line); z-index: 200;
+  box-shadow: 0 -2px 20px rgba(42, 36, 56, 0.05);
+}
+.action-bar-inner {
+  max-width: 860px; margin: 0 auto; padding: 12px 1.5rem;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.nav-btns { display: flex; gap: 8px; }
+.dl-btns { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 18px; border-radius: 100px;
+  font-family: 'Pretendard', sans-serif; font-size: 0.85rem; font-weight: 500;
+  cursor: pointer; transition: all 0.25s; border: none; text-decoration: none;
+}
+.btn-primary { background: var(--lavender-deep); color: #fff; }
+.btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(42, 36, 56, 0.15); }
+.btn-secondary { background: transparent; color: var(--ink-soft); border: 1.5px solid var(--section-line); }
+.btn-secondary:hover:not(:disabled) { border-color: var(--lavender-mid); color: var(--lavender-deep); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-ghost { background: var(--warm-white); color: var(--lavender-deep); border: 1.5px solid var(--lavender-soft); }
+.btn-ghost:hover { background: var(--lavender-whisper); }
+
+/* Save indicator */
+.save-indicator {
+  position: fixed; bottom: 5.5rem; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink); color: #fff; padding: 9px 22px;
+  border-radius: 100px; font-size: 0.8rem; font-weight: 500;
+  z-index: 1000; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.save-indicator.show { transform: translateX(-50%) translateY(0); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .panel-wrap { padding: 2rem 1.2rem; }
+  .field-row { grid-template-columns: 1fr; gap: 0.4rem; align-items: flex-start; }
+  .field-row > label { margin-bottom: 0; }
+  .keyword-tags { flex-direction: column; }
+  .keyword-tags input { min-width: auto; }
+  .dl-btns { margin-left: 0; width: 100%; }
+  .action-bar-inner { gap: 8px; }
+  .btn { padding: 9px 14px; font-size: 0.8rem; }
+}
+
+@media print {
+  .tabs-wrap, .action-bar, .save-indicator, .overall-progress { display: none !important; }
+  .panel { display: block !important; page-break-after: always; animation: none; }
+  body { padding-bottom: 0; }
+  textarea, input[type="text"] { border: 1px solid #ccc !important; }
+  body::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <p class="site-eyebrow">1인 기업가 마케팅 검증</p>
+  <h1 class="site-title">마케팅 검증 워크시트 7종</h1>
+  <p class="site-sub">1·2주차 산출물을 옮기고 빈칸을 채우면, 6강 마스터 시트가 빠르게 떨어집니다. 작성 내용은 이 브라우저에 자동 저장됩니다.</p>
+  <div class="overall-progress">
+    <span>전체 진행</span>
+    <span class="op-bar"><span class="op-fill" id="opFill"></span></span>
+    <span><b id="opDone">0</b> / 7 완료</span>
+  </div>
+</header>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="panel-wrap" id="panels"></div>
+
+<div class="action-bar">
+  <div class="action-bar-inner">
+    <div class="nav-btns">
+      <button class="btn btn-secondary" id="prevBtn" onclick="go(-1)">◀ 이전</button>
+      <button class="btn btn-secondary" id="nextBtn" onclick="go(1)">다음 ▶</button>
+    </div>
+    <div class="dl-btns">
+      <button class="btn btn-ghost" onclick="downloadFile('md')">⬇ 마크다운 저장</button>
+      <button class="btn btn-ghost" onclick="downloadFile('txt')">⬇ 텍스트 저장</button>
+      <button class="btn btn-primary" onclick="window.print()">🖨 인쇄 / PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="save-indicator" id="saveIndicator">✓ 저장됨</div>
+
+<script>
+/* ════════════════════════════════════════════
+   WORKSHEET CONFIG — 7종 단일 소스
+   block types: text | fill | fields | table | radio | checks | tags | checklist
+   ════════════════════════════════════════════ */
+const WS = [
+/* ── 01 ── */
+{
+  n: '01', tab: '사업 브리프', time: '15분',
+  title: '01 · Business Brief — 사업 한 줄 요약',
+  note: '이 워크시트는 마케터 AI가 <b>가장 먼저 읽는</b> 자료입니다. 1주차 산출물에서 가져올 수 있는 건 그대로 옮기고, 빈 칸만 채우세요.',
+  blocks: [
+    { type:'text', key:'w1_oneliner', label:'1. 사업 한 줄 정의', sub:'(1주차 01_idea_discovery.md에서) — 누구를 위한 + 무슨 사업 + 핵심 가치 1가지', size:'medium', ph:'예: 회의 많은 B2B 영업본부를 위한 회의록 자동화 SaaS — 정리 시간 0' },
+    { type:'table', label:'2. 핵심 가치 3개', sub:'(1주차 04_brand_strategy.md에서 그대로)',
+      headers:['#','핵심 가치','작동 방식 (한 줄)'],
+      rows:[
+        ['1', {input:'w1_value1_name'}, {input:'w1_value1_how'}],
+        ['2', {input:'w1_value2_name'}, {input:'w1_value2_how'}],
+        ['3', {input:'w1_value3_name'}, {input:'w1_value3_how'}],
+      ]},
+    { type:'radio', name:'w1_stage', label:'3. 현재 사업 진행 단계', sub:'하나만 선택',
+      options:[
+        {value:'아이디어', label:'🟢 아이디어', desc:'한 줄 정의는 됐지만 아직 매출 0'},
+        {value:'첫 5명 PoC', label:'🟡 첫 5명 PoC', desc:'무료·시범 고객으로 검증 중'},
+        {value:'유료 베타', label:'🟠 유료 베타', desc:'월 1~3명 결제 발생'},
+        {value:'정식 운영', label:'🔴 정식 운영', desc:'월 매출 안정적, 성장 중'},
+      ]},
+    { type:'text', key:'w1_goal30', label:'4. 다음 30일 목표 1개', sub:'무엇을 / 누구에게 / 얼마나', size:'short', ph:'예: B2B 영업본부 5곳에 14일 무료 체험 안내 메일 발송 → 2곳 응답 받기' },
+    { type:'checks', label:'5. 가장 큰 마케팅 막힘 1가지', sub:'솔직하게. 본 강의에서 가장 우선 해결할 것.',
+      options:[
+        {key:'w1_block_msg', label:'메시지가 정리 안 됨 (뭘 말해야 할지)'},
+        {key:'w1_block_persona', label:'페르소나가 흐림 (누가 살 건지)'},
+        {key:'w1_block_ad', label:'광고 돈 무서움 (어떻게 검증할지)'},
+        {key:'w1_block_content', label:'콘텐츠 일관 톤 어려움 (디자인·말투)'},
+        {key:'w1_block_channel', label:'채널 선택 어려움 (인스타? 블로그? 광고?)'},
+        {key:'w1_block_other', label:'다른 것:', text:'w1_block_other_txt'},
+      ]},
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w1_chk1', label:'1번 사업 한 줄이 30초 안에 입에서 나오는가'},
+        {key:'w1_chk2', label:'2번 핵심 가치 3개가 1주차 04에서 그대로 옮겨졌는가'},
+        {key:'w1_chk3', label:'3번 진행 단계 1개 선택됨'},
+        {key:'w1_chk4', label:'4번 30일 목표가 숫자·기간·대상이 명확한가'},
+        {key:'w1_chk5', label:'5번 가장 큰 막힘이 솔직하게 적혔는가'},
+      ],
+      footer:'📌 5개 모두 ✓ → 6강 B2 WPGOPC 마스터 시트가 빠르게 떨어집니다.' },
+  ]
+},
+/* ── 02 ── */
+{
+  n: '02', tab: '페르소나', time: '20분',
+  title: '02 · Persona Hypothesis — 페르소나 가설',
+  note: '이 워크시트는 5강 후 <b>가설</b> 작성용입니다. 정식 페르소나 카드는 6강 B4 한국형 STP 웹으로 완성됩니다. 지금은 내 머릿속 가장 명확한 1명을 적어두세요.',
+  blocks: [
+    { type:'fields', label:'1. 인구학', sub:'나이 + 성별 + 거주지 + 직업',
+      fields:[
+        {kind:'text', key:'w2_age', label:'나이', ph:'예: 32', suffix:'세'},
+        {kind:'radio', name:'w2_gender', label:'성별', options:[{value:'여성',label:'여성'},{value:'남성',label:'남성'},{value:'무관(B2B)',label:'무관(B2B)'}]},
+        {kind:'text', key:'w2_region', label:'거주지', ph:'도시·구 단위까지 (예: 서울 마포구)'},
+        {kind:'text', key:'w2_job', label:'직업', ph:'구체적으로 (예: IT 스타트업 마케터 5년차)'},
+        {kind:'text', key:'w2_income', label:'연소득(선택)', ph:'예: 4500', suffix:'만 원'},
+      ]},
+    { type:'fields', label:'2. 현재 도구·습관', sub:'내 사업과 관련된 문제를 해결하려 할 때 지금 쓰는 것',
+      fields:[
+        {kind:'text', key:'w2_tool', label:'현재 쓰는 서비스', ph:'예: 엑셀 + 카톡으로 수기 정리'},
+        {kind:'checks', label:'정보 채널', name:'w2_infoch', options:[
+          {key:'w2_ch_insta', label:'인스타'},{key:'w2_ch_youtube', label:'유튜브'},
+          {key:'w2_ch_naver', label:'네이버'},{key:'w2_ch_linkedin', label:'링크드인'},
+          {key:'w2_ch_blog', label:'블로그'},{key:'w2_ch_other', label:'다른:', text:'w2_ch_other_txt'},
+        ]},
+        {kind:'text', key:'w2_price', label:'결제 의향 가격대', ph:'예: 월 3만 원 / 1회 10만 원'},
+        {kind:'radio', name:'w2_ailevel', label:'AI 활용 수준', options:[
+          {value:'거의 안 씀',label:'거의 안 씀'},{value:'검색창처럼',label:'검색창처럼'},
+          {value:'도구로',label:'도구로'},{value:'직원처럼',label:'직원처럼'},
+        ]},
+      ]},
+    { type:'text', key:'w2_pain', label:'3. 1순위 Pain', sub:'(1주차 02_competitive.md 무행동 분석에서) — 고객 본인이 했을 법한 말 그대로', size:'short', ph:'"____________________"' },
+    { type:'fill', key:'w2_inaction', before:'무행동 비율 (체감):', after:'%' },
+    { type:'text', key:'w2_trigger', label:'4. 트리거 이벤트', sub:'이 사람의 무행동이 깨질 사건. 보통 외부 변화 1개.', size:'short', ph:'예: 다음 분기 매출 목표 30% 미달 / 팀원이 그만둠 / 경쟁사가 광고를 시작함' },
+    { type:'text', key:'w2_persona', label:'5. 페르소나 1명 1줄 요약', sub:'위 1~4를 종합한 한 줄 페르소나 카드', size:'medium', ph:'예: 32세 IT 5년차, 마포구 점심 거르는 여성, 인스타 광고로 노션 템플릿 봐도 "나중에"로 미루는 사람. 분기 매출 목표 미달 위기에 다음 분기 시작 전 결심.' },
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w2_chk1', label:'1번 인구학이 "30대 직장인" 수준이 아니라 나이·도시구·직업까지 명시됐는가'},
+        {key:'w2_chk2', label:'2번 현재 도구 4가지 모두 채워졌는가'},
+        {key:'w2_chk3', label:'3번 1순위 Pain이 고객 본인이 했을 법한 말 한 줄로 적혔는가'},
+        {key:'w2_chk4', label:'4번 트리거가 외부 사건 1개로 명시됐는가'},
+        {key:'w2_chk5', label:'5번 페르소나 1줄 요약이 옆자리 사람에게 그림이 그려지나'},
+      ],
+      footer:'📌 5개 모두 ✓ → 6강 B4 한국형 STP 7단계의 0단계 사전 점검이 30초에 끝납니다.' },
+  ]
+},
+/* ── 03 ── */
+{
+  n: '03', tab: '메시지 척추', time: '15분',
+  title: '03 · Message Hook — 메시지 척추',
+  note: '이 워크시트는 <b>복사·붙여넣기 작업</b>입니다. 1주차 04_brand_strategy.md에서 그대로 옮기세요. 새로 만들면 6강에서 톤이 흔들립니다.',
+  blocks: [
+    { type:'text', key:'w3_hook', label:'1. Hook (1주차 04에서 그대로)', sub:'1순위 Pain을 거꾸로 뒤집은 공감 한 줄. 광고 헤드라인의 원본.', size:'short', ph:'예: 회의 1시간에 정리 3시간이 들었습니다. 그게 안 들게 만드는 게 우리 일입니다.' },
+    { type:'fields', label:'2. Epiphany Bridge', sub:'창업자가 겪은 옛 고통 → 깨달음 → 만든 것의 짧은 스토리',
+      fields:[
+        {kind:'textarea', key:'w3_epi_pain', label:'옛 고통', ph:'겪었던 고통...'},
+        {kind:'textarea', key:'w3_epi_insight', label:'깨달음', ph:'그때 깨달은 것...'},
+        {kind:'textarea', key:'w3_epi_solution', label:'솔루션', ph:'그래서 만든 것...'},
+      ]},
+    { type:'text', key:'w3_mission', label:'3. 미션 1문장', sub:'왜 존재하는가', size:'short', ph:'우리는 ___를 위해 존재한다' },
+    { type:'text', key:'w3_vision', label:'4. 비전 1문장', sub:'5년 후 어디에', size:'short', ph:'5년 후 우리는 ___' },
+    { type:'table', label:'5. 핵심가치 3개 (1주차 04에서 그대로)',
+      headers:['#','가치','작동 방식'],
+      rows:[
+        ['1', {input:'w3_value1_name'}, {input:'w3_value1_how'}],
+        ['2', {input:'w3_value2_name'}, {input:'w3_value2_how'}],
+        ['3', {input:'w3_value3_name'}, {input:'w3_value3_how'}],
+      ]},
+    { type:'tags', label:'6. 브랜드 성격 — 형용사 3개', sub:'★ 디자인 시스템 토큰의 색·폰트 선택 기준이 됩니다',
+      keys:['w3_adj1','w3_adj2','w3_adj3'], ph:['형용사 1','형용사 2','형용사 3'],
+      tip:'예: 전문적 · 조용함 · 따뜻함 / 탐험적 · 솔직한 · 따뜻한' },
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w3_chk1', label:'1번 Hook이 내 입에서 자연스럽게 나오는가'},
+        {key:'w3_chk2', label:'2번 Epiphany Bridge가 모두 채워졌는가'},
+        {key:'w3_chk3', label:'3번 미션이 왜 존재하는가에 대한 답인가'},
+        {key:'w3_chk4', label:'4번 비전이 5년 후의 모습인가'},
+        {key:'w3_chk5', label:'5번 핵심가치 3개가 결정 기준으로 작동할 수 있는가'},
+        {key:'w3_chk6', label:'6번 브랜드 성격 3 형용사가 서로 어울리는가'},
+      ],
+      footer:'📌 6개 모두 ✓ → 6강 B2 + B3 Hero 5각도가 1주차 톤 그대로 만들어집니다. ★ 6번 형용사는 DS 에셋 + B6 디자인 적용의 유일한 톤 기준.' },
+  ]
+},
+/* ── 04 ── */
+{
+  n: '04', tab: '오퍼', time: '15분',
+  title: '04 · Offer — Value Ladder 5단계',
+  note: '이 워크시트는 <b>가격·진입 장벽</b>을 정리합니다. 1주차 04에서 가설은 가져오되, 수치는 본인이 결정하세요.',
+  blocks: [
+    { type:'table', label:'1. Value Ladder 5단계', sub:'1주차 04 + 본인 수치',
+      headers:['단계','상품 형태','가격','진입 장벽 낮추기'],
+      rows:[
+        ['무료 (Lead Magnet)', {input:'w4_free_product'}, {static:'0원'}, {static:'(자동 0원)'}],
+        ['저가 (Tripwire)', {input:'w4_low_product'}, {input:'w4_low_price', ph:'만원'},
+          {checks:[{key:'w4_low_b1',label:'7일 무료'},{key:'w4_low_b2',label:'환불'},{key:'w4_low_b3',label:'보증'}]}],
+        ['중가 (Core)', {input:'w4_core_product'}, {input:'w4_core_price', ph:'만원'},
+          {checks:[{key:'w4_core_b1',label:'14일 무료'},{key:'w4_core_b2',label:'환불'},{key:'w4_core_b3',label:'보증'}]}],
+        ['고가 (Profit)', {input:'w4_high_product'}, {input:'w4_high_price', ph:'월 만원'},
+          {checks:[{key:'w4_high_b1',label:'월간 해지'},{key:'w4_high_b2',label:'환불'},{key:'w4_high_b3',label:'보증'}]}],
+        ['프리미엄 (1:1)', {input:'w4_prem_product'}, {input:'w4_prem_price', ph:'만원'},
+          {checks:[{key:'w4_prem_b1',label:'무료 진단'},{key:'w4_prem_b2',label:'사례 보장'}]}],
+      ]},
+    { type:'radio', name:'w4_validate', label:'2. 현재 검증 중인 단계 1개', sub:'본 강의(3주차)에서 가장 우선 검증할 단계',
+      options:[
+        {value:'무료', label:'무료 (Lead Magnet)', desc:'진단·체크리스트로 이메일 받기'},
+        {value:'저가', label:'저가 (Tripwire)', desc:'미니 체험 결제 의향'},
+        {value:'중가', label:'중가 (Core)', desc:'메인 상품 결제'},
+        {value:'고가', label:'고가 (Profit)', desc:'정기 구독 가입'},
+        {value:'프리미엄', label:'프리미엄 (1:1)', desc:'컨설팅 신청'},
+      ],
+      tip:'💡 1인 기업가는 Core 또는 Tripwire 1단계만 우선 검증. 5단계 동시 검증 X.' },
+    { type:'text', key:'w4_offer', label:'3. 핵심 Offer 1문장', sub:'"____에게 ____를 ____만 원에 ____ (진입 장벽)"', size:'short', ph:'예: B2B 영업본부에 회의 자동 1쪽 SaaS를 월 5만 원에 14일 무료 체험으로' },
+    { type:'checks', label:'4. 진입 장벽 낮추기 — 어떤 보장이 있나',
+      options:[
+        {key:'w4_g_trial', label:'무료 체험 N일:', text:'w4_g_trial_n'},
+        {key:'w4_g_refund', label:'환불 보장 N일:', text:'w4_g_refund_n'},
+        {key:'w4_g_result', label:'결과 보장 (실패 시 0원)'},
+        {key:'w4_g_consult', label:'1:1 첫 상담 무료'},
+        {key:'w4_g_case', label:'사례 N건 무료 적용 후 결정'},
+        {key:'w4_g_other', label:'다른:', text:'w4_g_other_txt'},
+      ]},
+    { type:'checks', label:'5. 가격 설정 근거', sub:'중가·고가 가격이 왜 그 숫자인가 (하나 이상)',
+      options:[
+        {key:'w4_basis_comp', label:'경쟁사 분석 평균'},
+        {key:'w4_basis_ltv', label:'LTV 추정 (1년 평균 결제 × 마진)'},
+        {key:'w4_basis_time', label:'본인 시간 비용 (시간당 × 작업 시간)'},
+        {key:'w4_basis_interview', label:'고객 5명 인터뷰'},
+        {key:'w4_basis_gut', label:'직감 (솔직히 적어 두세요 — 6강에서 검증 가설로 등록)'},
+      ]},
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w4_chk1', label:'1번 5단계 모두 채워짐 (빈 단계 0개)'},
+        {key:'w4_chk2', label:'2번 우선 검증 단계 1개 선택'},
+        {key:'w4_chk3', label:'3번 핵심 Offer 1문장이 30초 안에 입에서 나오는가'},
+        {key:'w4_chk4', label:'4번 진입 장벽 낮추기 1개 이상 선택'},
+        {key:'w4_chk5', label:'5번 가격 근거가 명시됐는가 (직감이어도 OK)'},
+      ],
+      footer:'📌 5개 모두 ✓ → 6강 B3 Hero·서브·CTA가 결제 의향을 만드는 톤으로 떨어집니다.' },
+  ]
+},
+/* ── 05 ── */
+{
+  n: '05', tab: '증거', time: '15분',
+  title: '05 · Proof Assets — 왜 믿어도 되나',
+  note: 'Proof는 <b>광고에서 첫 클릭률을 결정</b>합니다. 사례·데이터·권위 3종 세트 — 한 가지만 있으면 약합니다.',
+  blocks: [
+    { type:'table', label:'1. 사례 (Case) — 실제 고객 결과 3건', sub:'무료 PoC도 OK. 구체 숫자 + 한 줄 결과',
+      headers:['#','고객 (가명·업종 OK)','사용 기간','한 줄 결과'],
+      rows:[
+        ['1', {input:'w5_case1_who'}, {input:'w5_case1_period', ph:'개월'}, {input:'w5_case1_result'}],
+        ['2', {input:'w5_case2_who'}, {input:'w5_case2_period', ph:'개월'}, {input:'w5_case2_result'}],
+        ['3', {input:'w5_case3_who'}, {input:'w5_case3_period', ph:'개월'}, {input:'w5_case3_result'}],
+      ],
+      tip:'💡 사례 0건이면 지인 5명 인터뷰 결과로 대체. 인터뷰도 없으면 진행 중 PoC를 "검증 중"으로 표시.' },
+    { type:'table', label:'2. 데이터 (KSF) 3개 + 현재 보유 수준', sub:'1주차 05_proposal.md KSF 표에서 그대로',
+      headers:['#','KSF','보유 수준 (1~5)','근거'],
+      rows:[
+        ['1', {input:'w5_ksf1_name'}, {input:'w5_ksf1_level', ph:'/5'}, {input:'w5_ksf1_basis'}],
+        ['2', {input:'w5_ksf2_name'}, {input:'w5_ksf2_level', ph:'/5'}, {input:'w5_ksf2_basis'}],
+        ['3', {input:'w5_ksf3_name'}, {input:'w5_ksf3_level', ph:'/5'}, {input:'w5_ksf3_basis'}],
+      ],
+      tip:'⚠ "모두 5/5" 함정 주의. 솔직 3~4점 + 보강 액션 = 신뢰 ↑' },
+    { type:'checks', label:'3. 권위 (Authority) — 자격·수상·매체·경력',
+      options:[
+        {key:'w5_auth_career', label:'강사 본인 경력 (몇 년):', text:'w5_auth_career_txt'},
+        {key:'w5_auth_cert', label:'자격증·인증:', text:'w5_auth_cert_txt'},
+        {key:'w5_auth_media', label:'매체 노출 (기사·인터뷰):', text:'w5_auth_media_txt'},
+        {key:'w5_auth_award', label:'수상·선정:', text:'w5_auth_award_txt'},
+        {key:'w5_auth_edu', label:'학력·소속·협회:', text:'w5_auth_edu_txt'},
+        {key:'w5_auth_other', label:'다른:', text:'w5_auth_other_txt'},
+      ],
+      tip:'💡 권위 0개여도 과장 금지. 사례 + 데이터로 보강 가능.' },
+    { type:'text', key:'w5_proof', label:'4. Proof 1줄 요약', sub:'위 1·2·3 중 가장 강한 1개를 광고에서 쓸 한 줄로', size:'short', ph:'예: 삼성·LG·현대 영업본부 12곳에서 검증된 한국어 회의록' },
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w5_chk1', label:'1번 사례 3건 채워짐 (PoC·인터뷰·"검증 중" 다 OK)'},
+        {key:'w5_chk2', label:'2번 KSF 3개 + 보유 수준 표시'},
+        {key:'w5_chk3', label:'3번 권위 최소 1개 선택 (없으면 "없음" 명시)'},
+        {key:'w5_chk4', label:'4번 Proof 1줄이 고객이 보면 클릭하고 싶은 강도인가'},
+      ],
+      footer:'📌 4개 모두 ✓ → 6강 B2 WPGOPC의 P (Proof)가 즉시 채워집니다.' },
+  ]
+},
+/* ── 06 ── */
+{
+  n: '06', tab: '채널', time: '6강 수업 중',
+  title: '06 · Channels — 5채널 우선순위',
+  noteWarn: true,
+  note: '⚠ 이 워크시트는 <b>6강 수업 중 채웁니다.</b> 사전 과제 아님. 5강에서 왜 이 채널들인지 학습한 후, 6강 B6에서 본인 사업에 매핑.',
+  blocks: [
+    { type:'table', label:'1. 5채널 비교 (강의에서 학습)',
+      headers:['채널','강점','비용','적합도(1~5)','우선순위'],
+      rows:[
+        [{static:'인스타'}, {static:'시각·짧은 폼·MZ'}, {static:'광고비 필요'}, {input:'w6_insta_fit', ph:'/5'}, {input:'w6_insta_rank', ph:'순위'}],
+        [{static:'스레드'}, {static:'짧은 폼·실시간'}, {static:'무료'}, {input:'w6_thread_fit', ph:'/5'}, {input:'w6_thread_rank', ph:'순위'}],
+        [{static:'블로그'}, {static:'SEO·긴 폼·신뢰'}, {static:'무료·시간'}, {input:'w6_blog_fit', ph:'/5'}, {input:'w6_blog_rank', ph:'순위'}],
+        [{static:'LinkedIn'}, {static:'B2B·전문직'}, {static:'무료·광고'}, {input:'w6_li_fit', ph:'/5'}, {input:'w6_li_rank', ph:'순위'}],
+        [{static:'이메일'}, {static:'1:1·결제 직결'}, {static:'무료'}, {input:'w6_email_fit', ph:'/5'}, {input:'w6_email_rank', ph:'순위'}],
+      ]},
+    { type:'fields', label:'2. 우선 검증 채널 1~2개', sub:'6강 B6에서',
+      fields:[
+        {kind:'text', key:'w6_ch1', label:'1순위', ph:'채널명'},
+        {kind:'text', key:'w6_ch1_why', label:'이유', ph:'왜 이 채널인가'},
+        {kind:'text', key:'w6_ch2', label:'2순위(선택)', ph:'채널명'},
+        {kind:'text', key:'w6_ch2_why', label:'이유', ph:'왜 이 채널인가'},
+      ],
+      tip:'💡 1인 기업가는 1채널부터. 본 강의에서는 5채널 시제품을 모두 만들고, 우선 검증 1채널만 결정.' },
+    { type:'fields', label:'3. 채널별 페르소나 매칭', sub:'02 페르소나가 주로 어디서 정보를 얻는지 (1~3순위)',
+      fields:[
+        {kind:'text', key:'w6_match1', label:'1순위', ph:'채널'},
+        {kind:'text', key:'w6_match2', label:'2순위', ph:'채널'},
+        {kind:'text', key:'w6_match3', label:'3순위', ph:'채널'},
+      ]},
+    { type:'fields', label:'4. 첫 캠페인 가설', sub:'수료 후 진행',
+      fields:[
+        {kind:'text', key:'w6_camp_ch', label:'채널', ph:'예: 인스타'},
+        {kind:'text', key:'w6_camp_content', label:'콘텐츠 종류', ph:'예: 짧은 콘텐츠 인스타 발행'},
+        {kind:'text', key:'w6_camp_freq', label:'주기', ph:'예: 주 3회'},
+        {kind:'text', key:'w6_camp_kpi', label:'1차 KPI', ph:'예: 랜딩 클릭률 2~4%'},
+        {kind:'text', key:'w6_camp_when', label:'실행 시점', ph:'예: 수료 후 7일 이내'},
+      ]},
+    { type:'checklist', label:'완성 체크리스트 (6강 B6 종료 시점)',
+      items:[
+        {key:'w6_chk1', label:'1번 5채널 적합도·우선순위 모두 표시'},
+        {key:'w6_chk2', label:'2번 1순위 채널 + 이유 명시'},
+        {key:'w6_chk3', label:'3번 페르소나가 보는 채널 1~3순위 적힘'},
+        {key:'w6_chk4', label:'4번 첫 캠페인 가설 5요소 모두 채워짐'},
+      ],
+      footer:'📌 4개 모두 ✓ → handoff_to_week4의 이벤트 / 데이터 위치 / 자동화 가능 항목이 명확해집니다.' },
+  ]
+},
+/* ── 07 ── */
+{
+  n: '07', tab: '도구 셋업', time: '10분',
+  title: '07 · Tooling — 도구 셋업',
+  note: '이 워크시트는 6강 B5 빌드 트랙을 <b>미리 결정</b>합니다. 사이 2일(수·목) 안에 1택 정하고, API 키·계정 점검.',
+  blocks: [
+    { type:'radio', name:'w7_track', label:'1. 빌드 툴 1택 ⭐', sub:'반드시 1개만 — 동시 선택 시 6강에서 결정 못 함',
+      options:[
+        {value:'A · Cowork', label:'A (권장) · Cowork 직접 빌드', desc:'~10분 · 코딩 기본 OK, 깔끔하게'},
+        {value:'B · Lovable', label:'B · Lovable', desc:'~30초 · 시각 빠르게'},
+        {value:'C · Google AI Studio', label:'C · Google AI Studio', desc:'~5분 · Gemini 사용자, 무료 선호'},
+      ]},
+    { type:'checks', label:'2. 선택 트랙의 무료 가입 + 첫 화면 확인',
+      options:[
+        {key:'w7_signup1', label:'본인 트랙 도구 무료 가입 완료'},
+        {key:'w7_signup2', label:'첫 화면 1번 열어봄 (어디 클릭해야 시작인지 확인)'},
+        {key:'w7_signup3', label:'한국어 화면 작동 OK'},
+      ]},
+    { type:'checks', label:'3. API 키 점검 (사전준비 ①번 키 재사용)',
+      options:[
+        {key:'w7_api_claude', label:'Claude API 키 있음 (또는 Claude Pro 구독으로 대체)', text:'w7_api_claude_txt'},
+        {key:'w7_api_openai', label:'OpenAI API 키 있음 (또는 ChatGPT Plus로 대체)', text:'w7_api_openai_txt'},
+        {key:'w7_api_gemini', label:'Gemini API 키 있음 (또는 AI Studio 무료 키로 대체)', text:'w7_api_gemini_txt'},
+      ],
+      tip:'💡 본 강의에서 최소 1종 키만 있으면 됩니다 (페르소나 웹·자산 추출 웹용).' },
+    { type:'checks', label:'4. 로컬 환경 점검',
+      options:[
+        {key:'w7_env1', label:'marketing_lab_<사업명>/ 폴더 생성 완료'},
+        {key:'w7_env2', label:'동기화 폴더(OneDrive·iCloud) 밖에 위치'},
+        {key:'w7_env3', label:'00_inputs/ 안에 1·2주차 산출물 .md 들어가 있음'},
+        {key:'w7_env4', label:'Claude Desktop + Cowork 토글 ON'},
+        {key:'w7_env5', label:'Claude Project "검증용 마케터 — <사업명>" 생성 완료'},
+      ]},
+    { type:'checks', label:'5. 자율 과제 완성도 (5강 후 2일 · 수·목)',
+      options:[
+        {key:'w7_task1', label:'★ 브랜드맵 초안 → outputs/brandmap_draft.md'},
+        {key:'w7_task2', label:'★ DS 에셋 묶음 → outputs/design_system/ (트랙 1 진입 자격)'},
+        {key:'w7_task3', label:'★ (선택) DS GitHub 레포 push'},
+      ],
+      tip:'💡 둘 다 미완성이어도 6강 진행 OK. 완성한 항목만큼 6강이 빠르게 흐릅니다.' },
+    { type:'checklist', label:'완성 체크리스트',
+      items:[
+        {key:'w7_chk1', label:'1번 빌드 트랙 1개 선택 (반드시 1개만)'},
+        {key:'w7_chk2', label:'2번 트랙 도구 무료 가입 완료'},
+        {key:'w7_chk3', label:'3번 API 키 최소 1종 확인'},
+        {key:'w7_chk4', label:'4번 로컬 환경 5가지 모두 ✓'},
+        {key:'w7_chk5', label:'5번 자율 과제 완성도 표시'},
+      ],
+      footer:'📌 5개 모두 ✓ → 6강 4시간이 기술적 막힘 없이 흐릅니다. 환경 점검 마지막 관문입니다.' },
+  ]
+},
+];
+
+/* ════════════════════════════════════════════
+   RENDER
+   ════════════════════════════════════════════ */
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function inputCell(c) {
+  if (c == null) return '<td></td>';
+  if (typeof c === 'string') return `<td class="cell-static">${esc(c)}</td>`;
+  if (c.static !== undefined) return `<td class="cell-static">${esc(c.static)}</td>`;
+  if (c.input) return `<td><input type="text" data-key="${c.input}" placeholder="${esc(c.ph||'')}"></td>`;
+  if (c.checks) {
+    const inner = c.checks.map(ch => `<label class="opt inline-checks"><input type="checkbox" data-key="${ch.key}"><span class="opt-body">${esc(ch.label)}</span></label>`).join('');
+    return `<td><div class="cell-checks">${inner}</div></td>`;
+  }
+  return '<td></td>';
+}
+
+function renderOptions(name, options) {
+  return options.map(o => {
+    const textInput = o.text ? `<input type="text" class="opt-text" data-key="${o.text}" placeholder="자유 입력">` : '';
+    if (name) { // radio
+      return `<label class="opt"><input type="radio" name="${name}" data-radio="${name}" value="${esc(o.value)}">`
+        + `<span class="opt-body">${esc(o.label)}${o.desc?`<span class="opt-desc">${esc(o.desc)}</span>`:''}</span></label>`;
+    }
+    return `<label class="opt"><input type="checkbox" data-key="${o.key}">`
+      + `<span class="opt-body">${esc(o.label)}${o.desc?`<span class="opt-desc">${esc(o.desc)}</span>`:''}${textInput}</span></label>`;
+  }).join('');
+}
+
+function renderField(f) {
+  let input = '';
+  if (f.kind === 'text') {
+    input = `<input type="text" data-key="${f.key}" placeholder="${esc(f.ph||'')}">`
+      + (f.suffix?`<span class="field-suffix">${esc(f.suffix)}</span>`:'');
+  } else if (f.kind === 'textarea') {
+    input = `<textarea class="short" data-key="${f.key}" placeholder="${esc(f.ph||'')}"></textarea>`;
+  } else if (f.kind === 'radio') {
+    input = `<div class="options" style="flex-direction:row;flex-wrap:wrap;gap:6px;">${renderOptions(f.name, f.options)}</div>`;
+  } else if (f.kind === 'checks') {
+    input = `<div class="options" style="flex-direction:row;flex-wrap:wrap;gap:6px;">${renderOptions(null, f.options)}</div>`;
+  }
+  return `<div class="field-row"><label>${esc(f.label)}</label><div class="field-input">${input}</div></div>`;
+}
+
+function renderBlock(b) {
+  const head = (b.label?`<div class="block-label">${b.label}</div>`:'')
+    + (b.sub?`<div class="block-sub">${esc(b.sub)}</div>`:'');
+  const tip = b.tip?`<div class="block-tip">${esc(b.tip)}</div>`:'';
+  let body = '';
+  switch (b.type) {
+    case 'text':
+      body = `<textarea class="${b.size||'short'}" data-key="${b.key}" placeholder="${esc(b.ph||'')}"></textarea>`;
+      break;
+    case 'fill':
+      body = `<div class="fill-blank"><span>${esc(b.before)}</span><input type="text" data-key="${b.key}" placeholder=""><span>${esc(b.after||'')}</span></div>`;
+      break;
+    case 'fields':
+      body = `<div class="fields">${b.fields.map(renderField).join('')}</div>`;
+      break;
+    case 'table':
+      body = `<div class="ws-table-wrap"><table class="ws-table"><thead><tr>${b.headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead>`
+        + `<tbody>${b.rows.map(r=>`<tr>${r.map(inputCell).join('')}</tr>`).join('')}</tbody></table></div>`;
+      break;
+    case 'radio':
+      body = `<div class="options">${renderOptions(b.name, b.options)}</div>`;
+      break;
+    case 'checks':
+      body = `<div class="options">${renderOptions(null, b.options)}</div>`;
+      break;
+    case 'tags':
+      body = `<div class="keyword-tags">${b.keys.map((k,i)=>`<input type="text" data-key="${k}" placeholder="${esc(b.ph[i]||'')}">`).join('')}</div>`;
+      break;
+    case 'checklist':
+      return `<div class="checklist"><h3>✅ ${esc(b.label)}</h3>`
+        + b.items.map(it=>`<label class="checklist-item"><input type="checkbox" data-key="${it.key}" data-chk="1"><span>${esc(it.label)}</span></label>`).join('')
+        + (b.footer?`<div class="checklist-footer">${esc(b.footer)}</div>`:'') + `</div>`;
+  }
+  return `<div class="block">${head}${body}${tip}</div>`;
+}
+
+function renderAll() {
+  const tabs = document.getElementById('tabs');
+  const panels = document.getElementById('panels');
+  WS.forEach((ws, i) => {
+    tabs.insertAdjacentHTML('beforeend',
+      `<button class="tab" data-i="${i}" onclick="switchTab(${i})"><span class="tab-check">✓</span><span>${ws.n} ${esc(ws.tab)}</span></button>`);
+    const blocksHtml = ws.blocks.map(renderBlock).join('');
+    panels.insertAdjacentHTML('beforeend',
+      `<section class="panel" data-i="${i}">`
+      + `<p class="panel-number">WORKSHEET ${ws.n}</p>`
+      + `<h2 class="panel-title">${esc(ws.title)}</h2>`
+      + `<p class="panel-time"><span>⏱ ${esc(ws.time)}</span></p>`
+      + `<div class="coaching-note${ws.noteWarn?' warn':''}">${ws.note}</div>`
+      + blocksHtml + `</section>`);
+  });
+}
+
+/* ════════════════════════════════════════════
+   STATE: tab nav / save / restore / progress
+   ════════════════════════════════════════════ */
+const STORAGE_KEY = 'ceo_worksheet_7';
+const TAB_KEY = 'ceo_worksheet_7_tab';
+let current = 0;
+
+function switchTab(i) {
+  current = i;
+  document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active', idx===i));
+  document.querySelectorAll('.panel').forEach((p,idx)=>p.classList.toggle('active', idx===i));
+  document.getElementById('prevBtn').disabled = (i===0);
+  document.getElementById('nextBtn').disabled = (i===WS.length-1);
+  // move active tab into view
+  const at = document.querySelector(`.tab[data-i="${i}"]`);
+  if (at) at.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  window.scrollTo({top:0, behavior:'smooth'});
+  try { localStorage.setItem(TAB_KEY, String(i)); } catch(e){}
+}
+function go(d) {
+  const ni = current + d;
+  if (ni>=0 && ni<WS.length) switchTab(ni);
+}
+
+let saveTimeout;
+function saveData() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    if (el.type==='checkbox') data[el.dataset.key] = el.checked;
+    else data[el.dataset.key] = el.value;
+  });
+  document.querySelectorAll('[data-radio]').forEach(el=>{
+    if (el.checked) data[el.dataset.radio] = el.value;
+  });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); showSaveIndicator(); } catch(e){}
+}
+function restoreData() {
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); } catch(e){ data={}; }
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const v = data[el.dataset.key];
+    if (v===undefined) return;
+    if (el.type==='checkbox') el.checked = !!v;
+    else el.value = v;
+  });
+  document.querySelectorAll('[data-radio]').forEach(el=>{
+    if (data[el.dataset.radio] === el.value) el.checked = true;
+  });
+}
+function showSaveIndicator() {
+  const el = document.getElementById('saveIndicator');
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(()=>el.classList.remove('show'), 1800);
+}
+
+function updateProgress() {
+  let done = 0;
+  WS.forEach((ws, i) => {
+    const cl = ws.blocks.find(b=>b.type==='checklist');
+    if (!cl) return;
+    const all = cl.items.every(it => {
+      const el = document.querySelector(`[data-key="${it.key}"]`);
+      return el && el.checked;
+    });
+    const tab = document.querySelector(`.tab[data-i="${i}"]`);
+    if (tab) tab.classList.toggle('done', all);
+    if (all) done++;
+  });
+  document.getElementById('opDone').textContent = done;
+  document.getElementById('opFill').style.width = (done/WS.length*100) + '%';
+}
+
+/* ════════════════════════════════════════════
+   DOWNLOAD (md / txt) — config 단일 소스 직렬화
+   ════════════════════════════════════════════ */
+const val = k => { const el=document.querySelector(`[data-key="${k}"]`); return el?(el.value||'').trim():''; };
+const chk = k => { const el=document.querySelector(`[data-key="${k}"]`); return !!(el&&el.checked); };
+const radioVal = name => { const el=document.querySelector(`[data-radio="${name}"]:checked`); return el?el.value:''; };
+
+function box(on){ return on ? '[x]' : '[ ]'; }
+
+function serializeBlock(b, fmt) {
+  const md = fmt==='md';
+  let out = [];
+  const lbl = b.label ? b.label.replace(/<[^>]+>/g,'') : '';
+  switch (b.type) {
+    case 'text': {
+      const v = val(b.key);
+      out.push(md?`**${lbl}**`:`[${lbl}]`);
+      out.push(v || (md?'> _(미작성)_':'(미작성)'));
+      break;
+    }
+    case 'fill': {
+      out.push(`${b.before} ${val(b.key)||'____'} ${b.after||''}`.trim());
+      break;
+    }
+    case 'fields': {
+      if (lbl) out.push(md?`**${lbl}**`:`[${lbl}]`);
+      b.fields.forEach(f=>{
+        if (f.kind==='radio') out.push(`- ${f.label}: ${radioVal(f.name)||'(미선택)'}`);
+        else if (f.kind==='checks') {
+          const sel = f.options.filter(o=>chk(o.key)).map(o=>o.label.replace(/:$/,'')+(o.text?` ${val(o.text)}`:'')).join(', ');
+          out.push(`- ${f.label}: ${sel||'(없음)'}`);
+        } else out.push(`- ${f.label}: ${val(f.key)||'____'}`);
+      });
+      break;
+    }
+    case 'table': {
+      if (lbl) out.push(md?`**${lbl}**`:`[${lbl}]`);
+      if (md) {
+        out.push('| ' + b.headers.join(' | ') + ' |');
+        out.push('| ' + b.headers.map(()=>'---').join(' | ') + ' |');
+      }
+      b.rows.forEach(r=>{
+        const cells = r.map(c=>{
+          if (c==null) return '';
+          if (typeof c==='string') return c;
+          if (c.static!==undefined) return c.static;
+          if (c.input) return val(c.input)||'';
+          if (c.checks) return c.checks.filter(x=>chk(x.key)).map(x=>x.label).join('/')||'';
+          return '';
+        });
+        out.push(md ? '| ' + cells.join(' | ') + ' |' : '  · ' + cells.filter(Boolean).join(' / '));
+      });
+      break;
+    }
+    case 'radio': {
+      out.push(md?`**${lbl}**`:`[${lbl}]`);
+      const sel = radioVal(b.name);
+      b.options.forEach(o=>{
+        const on = (o.value===sel);
+        out.push(md?`- ${box(on)} ${o.label.replace(/<[^>]+>/g,'')}` : `  ${on?'■':'□'} ${o.label.replace(/<[^>]+>/g,'')}`);
+      });
+      break;
+    }
+    case 'checks': {
+      out.push(md?`**${lbl}**`:`[${lbl}]`);
+      b.options.forEach(o=>{
+        const on = chk(o.key);
+        const t = o.text&&val(o.text)?` ${val(o.text)}`:'';
+        out.push(md?`- ${box(on)} ${o.label}${t}` : `  ${on?'■':'□'} ${o.label}${t}`);
+      });
+      break;
+    }
+    case 'tags': {
+      out.push(md?`**${lbl}**`:`[${lbl}]`);
+      out.push(b.keys.map(k=>val(k)||'____').join(' · '));
+      break;
+    }
+    case 'checklist': {
+      out.push(md?`**✅ ${b.label}**`:`[✅ ${b.label}]`);
+      b.items.forEach(it=> out.push(md?`- ${box(chk(it.key))} ${it.label}`:`  ${chk(it.key)?'■':'□'} ${it.label}`));
+      if (b.footer) out.push(md?`\n> ${b.footer}`:b.footer);
+      break;
+    }
+  }
+  return out.join('\n');
+}
+
+function buildDoc(fmt) {
+  const md = fmt==='md';
+  const date = new Date().toLocaleDateString('ko-KR');
+  let lines = [];
+  if (md) {
+    lines.push('# 1인 기업가 마케팅 검증 워크시트 (7종)');
+    lines.push(`\n> 작성일: ${date}\n`);
+  } else {
+    lines.push('═══════════════════════════════════════');
+    lines.push('  1인 기업가 마케팅 검증 워크시트 (7종)');
+    lines.push(`  작성일: ${date}`);
+    lines.push('═══════════════════════════════════════');
+  }
+  WS.forEach(ws=>{
+    lines.push('');
+    lines.push(md?`---\n\n## ${ws.title}`:`\n── ${ws.title} ──`);
+    lines.push('');
+    ws.blocks.forEach(b=>{ lines.push(serializeBlock(b, fmt)); lines.push(''); });
+  });
+  return lines.join('\n');
+}
+
+function downloadFile(fmt) {
+  const text = buildDoc(fmt);
+  const ext = fmt==='md'?'md':'txt';
+  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `CEO워크시트7종_${new Date().toISOString().slice(0,10)}.${ext}`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* ════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════ */
+renderAll();
+restoreData();
+updateProgress();
+let startTab = 0;
+try { startTab = parseInt(localStorage.getItem(TAB_KEY)||'0',10)||0; } catch(e){}
+if (startTab<0 || startTab>=WS.length) startTab = 0;
+switchTab(startTab);
+
+document.addEventListener('input', e=>{
+  if (!e.target.dataset.key && !e.target.dataset.radio) return;
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(saveData, 800);
+});
+document.addEventListener('change', e=>{
+  if (e.target.dataset.key || e.target.dataset.radio) { saveData(); updateProgress(); }
+});
+</script>
+</body>
+</html>
