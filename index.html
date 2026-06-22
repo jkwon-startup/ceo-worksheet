@@ -215,6 +215,23 @@ body::before {
 }
 .coaching-note.warn { background: #fdf3ed; border-left-color: var(--terracotta); }
 
+/* Import (1주차 업로드/붙여넣기) */
+.import-box {
+  background: linear-gradient(135deg, var(--lavender-whisper) 0%, #faf5f0 100%);
+  border: 1.5px solid var(--lavender-soft);
+  border-radius: var(--radius); padding: 1.2rem 1.3rem;
+}
+.import-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 0.85rem; }
+.import-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 100px; cursor: pointer;
+  background: var(--lavender-deep); color: #fff; font-size: 0.85rem; font-weight: 500;
+  transition: all 0.25s;
+}
+.import-btn:hover { background: var(--ink); transform: translateY(-1px); }
+.import-or { font-size: 0.82rem; color: var(--ink-muted); }
+.import-file-name { font-size: 0.82rem; color: var(--sage); font-weight: 600; }
+
 /* ───────── BLOCKS ───────── */
 .block { margin-bottom: 2.4rem; }
 .block-label {
@@ -474,13 +491,14 @@ const WS = [
   title: '01 · Business Brief — 사업 한 줄 요약',
   note: '이 워크시트는 마케터 AI가 <b>가장 먼저 읽는</b> 자료입니다. 1주차 산출물에서 가져올 수 있는 건 그대로 옮기고, 빈 칸만 채우세요.',
   blocks: [
+    { type:'import', key:'w1_week1', label:'📂 1주차 산출물 가져오기', sub:'지난 1주차에 작성한 파일(.md/.txt)을 업로드하거나, 내용을 그대로 아래에 붙여넣고 시작하세요.', ph:'여기에 1주차 산출물 내용을 붙여넣으세요 (또는 위 버튼으로 파일 업로드)' },
     { type:'text', key:'w1_oneliner', label:'1. 사업 한 줄 정의', sub:'(1주차 01_idea_discovery.md에서) — 누구를 위한 + 무슨 사업 + 핵심 가치 1가지', size:'medium', ph:'예: 회의 많은 B2B 영업본부를 위한 회의록 자동화 SaaS — 정리 시간 0' },
-    { type:'table', label:'2. 핵심 가치 3개', sub:'(1주차 04_brand_strategy.md에서 그대로)',
-      headers:['#','핵심 가치','작동 방식 (한 줄)'],
+    { type:'table', label:'2. 핵심 가치 3개', sub:'(1주차 04_brand_strategy.md에서 그대로) — 가치만 적으세요',
+      headers:['#','핵심 가치'],
       rows:[
-        ['1', {input:'w1_value1_name'}, {input:'w1_value1_how'}],
-        ['2', {input:'w1_value2_name'}, {input:'w1_value2_how'}],
-        ['3', {input:'w1_value3_name'}, {input:'w1_value3_how'}],
+        ['1', {input:'w1_value1_name'}],
+        ['2', {input:'w1_value2_name'}],
+        ['3', {input:'w1_value3_name'}],
       ]},
     { type:'radio', name:'w1_stage', label:'3. 현재 사업 진행 단계', sub:'하나만 선택',
       options:[
@@ -490,24 +508,14 @@ const WS = [
         {value:'정식 운영', label:'🔴 정식 운영', desc:'월 매출 안정적, 성장 중'},
       ]},
     { type:'text', key:'w1_goal30', label:'4. 다음 30일 목표 1개', sub:'무엇을 / 누구에게 / 얼마나', size:'short', ph:'예: B2B 영업본부 5곳에 14일 무료 체험 안내 메일 발송 → 2곳 응답 받기' },
-    { type:'checks', label:'5. 가장 큰 마케팅 막힘 1가지', sub:'솔직하게. 본 강의에서 가장 우선 해결할 것.',
-      options:[
-        {key:'w1_block_msg', label:'메시지가 정리 안 됨 (뭘 말해야 할지)'},
-        {key:'w1_block_persona', label:'페르소나가 흐림 (누가 살 건지)'},
-        {key:'w1_block_ad', label:'광고 돈 무서움 (어떻게 검증할지)'},
-        {key:'w1_block_content', label:'콘텐츠 일관 톤 어려움 (디자인·말투)'},
-        {key:'w1_block_channel', label:'채널 선택 어려움 (인스타? 블로그? 광고?)'},
-        {key:'w1_block_other', label:'다른 것:', text:'w1_block_other_txt'},
-      ]},
     { type:'checklist', label:'완성 체크리스트',
       items:[
         {key:'w1_chk1', label:'1번 사업 한 줄이 30초 안에 입에서 나오는가'},
         {key:'w1_chk2', label:'2번 핵심 가치 3개가 1주차 04에서 그대로 옮겨졌는가'},
         {key:'w1_chk3', label:'3번 진행 단계 1개 선택됨'},
         {key:'w1_chk4', label:'4번 30일 목표가 숫자·기간·대상이 명확한가'},
-        {key:'w1_chk5', label:'5번 가장 큰 막힘이 솔직하게 적혔는가'},
       ],
-      footer:'📌 5개 모두 ✓ → 6강 B2 WPGOPC 마스터 시트가 빠르게 떨어집니다.' },
+      footer:'📌 4개 모두 ✓ → 6강 B2 WPGOPC 마스터 시트가 빠르게 떨어집니다.' },
   ]
 },
 /* ── 02 ── */
@@ -844,6 +852,16 @@ function renderBlock(b) {
     case 'text':
       body = `<textarea class="${b.size||'short'}" data-key="${b.key}" placeholder="${esc(b.ph||'')}"></textarea>`;
       break;
+    case 'import':
+      body = `<div class="import-box">`
+        + `<div class="import-row">`
+        + `<label class="import-btn">📂 파일 업로드 (.md/.txt)<input type="file" accept=".md,.markdown,.txt,text/plain" onchange="loadImportFile(this,'${b.key}')" hidden></label>`
+        + `<span class="import-or">또는 아래에 붙여넣기 ↓</span>`
+        + `<span class="import-file-name" id="${b.key}_name"></span>`
+        + `</div>`
+        + `<textarea class="medium" data-key="${b.key}" placeholder="${esc(b.ph||'')}"></textarea>`
+        + `</div>`;
+      break;
     case 'fill':
       body = `<div class="fill-blank"><span>${esc(b.before)}</span><input type="text" data-key="${b.key}" placeholder=""><span>${esc(b.after||'')}</span></div>`;
       break;
@@ -975,6 +993,7 @@ function serializeBlock(b, fmt) {
   let out = [];
   const lbl = b.label ? b.label.replace(/<[^>]+>/g,'') : '';
   switch (b.type) {
+    case 'import':
     case 'text': {
       const v = val(b.key);
       out.push(md?`**${lbl}**`:`[${lbl}]`);
@@ -1068,6 +1087,20 @@ function buildDoc(fmt) {
     ws.blocks.forEach(b=>{ lines.push(serializeBlock(b, fmt)); lines.push(''); });
   });
   return lines.join('\n');
+}
+
+function loadImportFile(input, key) {
+  const f = input.files && input.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const ta = document.querySelector(`[data-key="${key}"]`);
+    if (ta) { ta.value = e.target.result; saveData(); }
+    const nm = document.getElementById(key + '_name');
+    if (nm) nm.textContent = '✓ ' + f.name + ' 불러옴';
+  };
+  reader.readAsText(f);
+  input.value = '';
 }
 
 function downloadFile(fmt) {
