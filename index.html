@@ -48,7 +48,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  padding-bottom: 6rem;
+  padding-bottom: 8.5rem;
 }
 
 body::before {
@@ -448,12 +448,12 @@ table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
 
 <header class="site-header">
   <p class="site-eyebrow">1인 기업가 마케팅 검증</p>
-  <h1 class="site-title">마케팅 검증 워크시트 7종</h1>
+  <h1 class="site-title">마케팅 워크시트</h1>
   <p class="site-sub">1·2주차 산출물을 옮기고 빈칸을 채우면, 6강 마스터 시트가 빠르게 떨어집니다. 작성 내용은 이 브라우저에 자동 저장됩니다.</p>
   <div class="overall-progress">
     <span>전체 진행</span>
     <span class="op-bar"><span class="op-fill" id="opFill"></span></span>
-    <span><b id="opDone">0</b> / 7 완료</span>
+    <span><b id="opDone">0</b> / <span id="opTotal">0</span> 완료</span>
   </div>
 </header>
 
@@ -656,30 +656,30 @@ const WS = [
         ['3', {input:'w5_case3_who'}, {input:'w5_case3_period', ph:'개월'}, {input:'w5_case3_result'}],
       ],
       tip:'💡 사례 0건이면 지인 5명 인터뷰 결과로 대체. 인터뷰도 없으면 진행 중 PoC를 "검증 중"으로 표시.' },
-    { type:'table', label:'2. 데이터 (KSF) 3개 + 현재 보유 수준', sub:'1주차 05_proposal.md KSF 표에서 그대로',
-      headers:['#','KSF','보유 수준 (1~5)','근거'],
+    { type:'table', label:'2. 데이터 — 숫자로 보여주는 강점 3개', sub:'내 상품이 "이건 잘한다" 싶은 점과, 그걸 보여줄 숫자나 사실을 적으세요. 처음이라면 자랑하고 싶은 점부터 편하게.',
+      headers:['우리 상품이 잘하는 것','그걸 보여주는 숫자·사실'],
       rows:[
-        ['1', {input:'w5_ksf1_name'}, {input:'w5_ksf1_level', ph:'/5'}, {input:'w5_ksf1_basis'}],
-        ['2', {input:'w5_ksf2_name'}, {input:'w5_ksf2_level', ph:'/5'}, {input:'w5_ksf2_basis'}],
-        ['3', {input:'w5_ksf3_name'}, {input:'w5_ksf3_level', ph:'/5'}, {input:'w5_ksf3_basis'}],
+        [{input:'w5_data1_point', ph:'예: 한국어 회의록 정확도'}, {input:'w5_data1_fact', ph:'예: 95% 이상'}],
+        [{input:'w5_data2_point', ph:'예: 정리에 걸리는 시간'}, {input:'w5_data2_fact', ph:'예: 3시간 → 10분'}],
+        [{input:'w5_data3_point'}, {input:'w5_data3_fact'}],
       ],
-      tip:'⚠ "모두 5/5" 함정 주의. 솔직 3~4점 + 보강 액션 = 신뢰 ↑' },
-    { type:'checks', label:'3. 권위 (Authority) — 자격·수상·매체·경력',
-      options:[
-        {key:'w5_auth_career', label:'강사 본인 경력 (몇 년):', text:'w5_auth_career_txt'},
-        {key:'w5_auth_cert', label:'자격증·인증:', text:'w5_auth_cert_txt'},
-        {key:'w5_auth_media', label:'매체 노출 (기사·인터뷰):', text:'w5_auth_media_txt'},
-        {key:'w5_auth_award', label:'수상·선정:', text:'w5_auth_award_txt'},
-        {key:'w5_auth_edu', label:'학력·소속·협회:', text:'w5_auth_edu_txt'},
-        {key:'w5_auth_other', label:'다른:', text:'w5_auth_other_txt'},
+      tip:'💡 아직 큰 숫자가 없어도 OK. "써본 5명 중 4명이 만족" 같은 작은 사실도 좋습니다. 정말 없으면 "준비 중"이라고 적으세요. (없는 숫자 지어내기 금지)' },
+    { type:'fields', label:'3. 권위 — 왜 당신(우리)을 믿어도 되나', sub:'해당하는 것만 적으세요. 없는 칸은 비워둬도 됩니다.',
+      fields:[
+        {kind:'text', key:'w5_auth_career_txt', label:'경력', ph:'예: 마케팅 8년 / 회의록 도구 3년 운영'},
+        {kind:'text', key:'w5_auth_cert_txt', label:'자격증·인증', ph:'예: 정보처리기사, Google 인증'},
+        {kind:'text', key:'w5_auth_media_txt', label:'매체 노출', ph:'예: OO일보 인터뷰, 유튜브 출연'},
+        {kind:'text', key:'w5_auth_award_txt', label:'수상·선정', ph:'예: OO경진대회 대상'},
+        {kind:'text', key:'w5_auth_edu_txt', label:'학력·소속·협회', ph:'예: OO대 디자인학부, OO협회 회원'},
+        {kind:'text', key:'w5_auth_other_txt', label:'기타', ph:'그 외 신뢰를 주는 것'},
       ],
-      tip:'💡 권위 0개여도 과장 금지. 사례 + 데이터로 보강 가능.' },
+      tip:'💡 권위가 하나도 없어도 괜찮습니다. 위 사례·데이터로 충분히 보강됩니다. 단, 거짓·과장은 금물.' },
     { type:'text', key:'w5_proof', label:'4. Proof 1줄 요약', sub:'위 1·2·3 중 가장 강한 1개를 광고에서 쓸 한 줄로', size:'short', ph:'예: 삼성·LG·현대 영업본부 12곳에서 검증된 한국어 회의록' },
     { type:'checklist', label:'완성 체크리스트',
       items:[
         {key:'w5_chk1', label:'1번 사례 3건 채워짐 (PoC·인터뷰·"검증 중" 다 OK)'},
-        {key:'w5_chk2', label:'2번 KSF 3개 + 보유 수준 표시'},
-        {key:'w5_chk3', label:'3번 권위 최소 1개 선택 (없으면 "없음" 명시)'},
+        {key:'w5_chk2', label:'2번 강점 3개 + 그걸 보여주는 숫자·사실이 적혔는가'},
+        {key:'w5_chk3', label:'3번 권위 — 있는 것만 솔직하게 적었는가 (없으면 비워둠 OK)'},
         {key:'w5_chk4', label:'4번 Proof 1줄이 고객이 보면 클릭하고 싶은 강도인가'},
       ],
       footer:'📌 4개 모두 ✓ → 6강 B2 WPGOPC의 P (Proof)가 즉시 채워집니다.' },
@@ -731,57 +731,6 @@ const WS = [
         {key:'w6_chk4', label:'4번 첫 캠페인 가설 5요소 모두 채워짐'},
       ],
       footer:'📌 4개 모두 ✓ → handoff_to_week4의 이벤트 / 데이터 위치 / 자동화 가능 항목이 명확해집니다.' },
-  ]
-},
-/* ── 07 ── */
-{
-  n: '07', tab: '도구 셋업', time: '10분',
-  title: '07 · Tooling — 도구 셋업',
-  note: '이 워크시트는 6강 B5 빌드 트랙을 <b>미리 결정</b>합니다. 사이 2일(수·목) 안에 1택 정하고, API 키·계정 점검.',
-  blocks: [
-    { type:'radio', name:'w7_track', label:'1. 빌드 툴 1택 ⭐', sub:'반드시 1개만 — 동시 선택 시 6강에서 결정 못 함',
-      options:[
-        {value:'A · Cowork', label:'A (권장) · Cowork 직접 빌드', desc:'~10분 · 코딩 기본 OK, 깔끔하게'},
-        {value:'B · Lovable', label:'B · Lovable', desc:'~30초 · 시각 빠르게'},
-        {value:'C · Google AI Studio', label:'C · Google AI Studio', desc:'~5분 · Gemini 사용자, 무료 선호'},
-      ]},
-    { type:'checks', label:'2. 선택 트랙의 무료 가입 + 첫 화면 확인',
-      options:[
-        {key:'w7_signup1', label:'본인 트랙 도구 무료 가입 완료'},
-        {key:'w7_signup2', label:'첫 화면 1번 열어봄 (어디 클릭해야 시작인지 확인)'},
-        {key:'w7_signup3', label:'한국어 화면 작동 OK'},
-      ]},
-    { type:'checks', label:'3. API 키 점검 (사전준비 ①번 키 재사용)',
-      options:[
-        {key:'w7_api_claude', label:'Claude API 키 있음 (또는 Claude Pro 구독으로 대체)', text:'w7_api_claude_txt'},
-        {key:'w7_api_openai', label:'OpenAI API 키 있음 (또는 ChatGPT Plus로 대체)', text:'w7_api_openai_txt'},
-        {key:'w7_api_gemini', label:'Gemini API 키 있음 (또는 AI Studio 무료 키로 대체)', text:'w7_api_gemini_txt'},
-      ],
-      tip:'💡 본 강의에서 최소 1종 키만 있으면 됩니다 (페르소나 웹·자산 추출 웹용).' },
-    { type:'checks', label:'4. 로컬 환경 점검',
-      options:[
-        {key:'w7_env1', label:'marketing_lab_<사업명>/ 폴더 생성 완료'},
-        {key:'w7_env2', label:'동기화 폴더(OneDrive·iCloud) 밖에 위치'},
-        {key:'w7_env3', label:'00_inputs/ 안에 1·2주차 산출물 .md 들어가 있음'},
-        {key:'w7_env4', label:'Claude Desktop + Cowork 토글 ON'},
-        {key:'w7_env5', label:'Claude Project "검증용 마케터 — <사업명>" 생성 완료'},
-      ]},
-    { type:'checks', label:'5. 자율 과제 완성도 (5강 후 2일 · 수·목)',
-      options:[
-        {key:'w7_task1', label:'★ 브랜드맵 초안 → outputs/brandmap_draft.md'},
-        {key:'w7_task2', label:'★ DS 에셋 묶음 → outputs/design_system/ (트랙 1 진입 자격)'},
-        {key:'w7_task3', label:'★ (선택) DS GitHub 레포 push'},
-      ],
-      tip:'💡 둘 다 미완성이어도 6강 진행 OK. 완성한 항목만큼 6강이 빠르게 흐릅니다.' },
-    { type:'checklist', label:'완성 체크리스트',
-      items:[
-        {key:'w7_chk1', label:'1번 빌드 트랙 1개 선택 (반드시 1개만)'},
-        {key:'w7_chk2', label:'2번 트랙 도구 무료 가입 완료'},
-        {key:'w7_chk3', label:'3번 API 키 최소 1종 확인'},
-        {key:'w7_chk4', label:'4번 로컬 환경 5가지 모두 ✓'},
-        {key:'w7_chk5', label:'5번 자율 과제 완성도 표시'},
-      ],
-      footer:'📌 5개 모두 ✓ → 6강 4시간이 기술적 막힘 없이 흐릅니다. 환경 점검 마지막 관문입니다.' },
   ]
 },
 ];
@@ -963,6 +912,7 @@ function updateProgress() {
     if (all) done++;
   });
   document.getElementById('opDone').textContent = done;
+  document.getElementById('opTotal').textContent = WS.length;
   document.getElementById('opFill').style.width = (done/WS.length*100) + '%';
 }
 
