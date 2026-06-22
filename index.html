@@ -114,6 +114,15 @@ body::before {
   background: linear-gradient(90deg, var(--lavender-deep), var(--terracotta));
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.header-actions { margin-top: 1.1rem; }
+.btn-reset {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-radius: 100px; cursor: pointer;
+  background: transparent; border: 1.5px solid var(--section-line);
+  color: var(--ink-muted); font-family: 'Pretendard', sans-serif;
+  font-size: 0.8rem; font-weight: 500; transition: all 0.25s;
+}
+.btn-reset:hover { border-color: var(--terracotta); color: var(--terracotta); background: #fdf3ed; }
 
 /* ───────── TABS ───────── */
 .tabs-wrap {
@@ -454,6 +463,9 @@ table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
     <span>전체 진행</span>
     <span class="op-bar"><span class="op-fill" id="opFill"></span></span>
     <span><b id="opDone">0</b> / <span id="opTotal">0</span> 완료</span>
+  </div>
+  <div class="header-actions">
+    <button class="btn-reset" onclick="resetAll()">🆕 새 프로젝트 (전체 비우고 새로 시작)</button>
   </div>
 </header>
 
@@ -1038,6 +1050,16 @@ function loadImportFile(input, key) {
   };
   reader.readAsText(f);
   input.value = '';
+}
+
+function resetAll() {
+  const ok = confirm('🆕 새 프로젝트를 시작할까요?\n\n지금까지 작성한 모든 내용이 이 브라우저에서 삭제되고\n빈 워크시트로 새로 시작합니다.\n\n되돌릴 수 없으니, 필요하면 먼저 [마크다운 저장] 또는 [텍스트 저장]으로 백업하세요.');
+  if (!ok) return;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(TAB_KEY);
+  } catch(e){}
+  location.reload();
 }
 
 function downloadFile(fmt) {
