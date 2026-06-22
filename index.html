@@ -128,10 +128,10 @@ body::before {
   max-width: 860px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   padding: 12px 1.5rem;
-  overflow-x: auto;
-  scrollbar-width: thin;
 }
 .tab {
   flex: 0 0 auto;
@@ -317,7 +317,7 @@ table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
   color: var(--ink); font-weight: 500;
 }
 .opt .opt-body { flex: 1; }
-.opt .opt-desc { font-size: 0.78rem; color: var(--ink-muted); font-weight: 400; margin-top: 2px; }
+.opt .opt-desc { display: block; font-size: 0.78rem; color: var(--ink-muted); font-weight: 400; margin-top: 3px; line-height: 1.5; }
 .opt-text {
   margin-top: 7px; width: 100%;
   border: none; border-bottom: 1.5px solid var(--lavender-soft);
@@ -407,6 +407,7 @@ table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
 
 /* Responsive */
 @media (max-width: 768px) {
+  body { padding-bottom: 9rem; }
   .panel-wrap { padding: 2rem 1.2rem; }
   .field-row { grid-template-columns: 1fr; gap: 0.4rem; align-items: flex-start; }
   .field-row > label { margin-bottom: 0; }
