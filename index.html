@@ -485,7 +485,7 @@ table.ws-table .cell-checks { display: flex; flex-direction: column; gap: 4px; }
 
 <script>
 /* ════════════════════════════════════════════
-   WORKSHEET CONFIG — 7종 단일 소스
+   WORKSHEET CONFIG — 6종 단일 소스
    block types: text | fill | fields | table | radio | checks | tags | checklist
    ════════════════════════════════════════════ */
 const WS = [
@@ -1007,11 +1007,11 @@ function buildDoc(fmt) {
   const date = new Date().toLocaleDateString('ko-KR');
   let lines = [];
   if (md) {
-    lines.push('# 1인 기업가 마케팅 검증 워크시트 (7종)');
+    lines.push('# 마케팅 워크시트 (6종)');
     lines.push(`\n> 작성일: ${date}\n`);
   } else {
     lines.push('═══════════════════════════════════════');
-    lines.push('  1인 기업가 마케팅 검증 워크시트 (7종)');
+    lines.push('  마케팅 워크시트 (6종)');
     lines.push(`  작성일: ${date}`);
     lines.push('═══════════════════════════════════════');
   }
@@ -1055,7 +1055,7 @@ function downloadFile(fmt) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `CEO워크시트7종_${new Date().toISOString().slice(0,10)}.${ext}`;
+  a.download = `마케팅워크시트6종_${new Date().toISOString().slice(0,10)}.${ext}`;
   a.click();
   URL.revokeObjectURL(url);
 }
